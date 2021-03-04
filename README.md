@@ -2,6 +2,4 @@
 <br/>
 Hmshahri publication official app. Advertising and requirements registration platform for daily usage.
 <br/>
-To download the app or more info please visit:
-<br/>
 [Rahnama](https://myket.ir/app/com.rahnama.app)

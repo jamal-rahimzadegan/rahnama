@@ -1,18 +1,3 @@
-import React, {Component} from 'react';
-import {
-    View,
-    Text,
-    StatusBar,
-    FlatList,
-    TouchableOpacity,
-    Linking,
-    BackHandler
-} from 'react-native';
-import styles from '../../assets/styles/Offices';
-import Icon2 from "react-native-vector-icons/MaterialIcons";
-import {RedMed} from "../../assets/styles/GlobalStyle";
-import {Context} from "../../context/Context";
-
 export default class Offices extends Component {
     static contextType = Context
     constructor(props) {
@@ -70,7 +55,6 @@ export default class Offices extends Component {
         );
     }
 
-//------for opening the location of the office -------------------------------------------------------
     goToLocation(lat, lng) {
         const scheme = Platform.select({ios: 'maps:0,0?q=', android: 'geo:0,0?q='});
         const latLng = `${lat},${lng}`;

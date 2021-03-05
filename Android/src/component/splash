@@ -1,0 +1,75 @@
+export default function SplashScreen(props) {
+    const context = useContext(Context)
+    
+    useEffect(() => {
+        NetInfo.fetch().then(state => {
+            if (state.isInternetReachable) {
+                checkVersion()
+                getOffices()
+                getCities()
+                setTimeout(() => props.navigation.replace('Home'), 3000);
+            } else context.set_Network_is_Disconnected()
+        });
+    }, [context.isHasInternet]);
+    
+    return (
+        <View style={styles.SplashScreenContainer}>
+            <StatusBar backgroundColor={context.isHasInternet ? RedDark : '#fff'}
+                       barStyle={context.isHasInternet ? 'light-content' : 'dark-content'}/>
+            {context.isHasInternet ?
+                <LottieView source={require('../assets/animations/SplashAnimation.json')} autoSize={true}
+                            style={styles.SplashAnimation} resizeMode={'contain'} autoPlay loop/>
+                : <View style={[styles.NoInternetBack, {backgroundColor: context.BG_COLOR}]}>
+                    <InternetModal Close={() => {
+                        context.set_Network_is_Connected()
+                        props.navigation.replace('SplashScreen')
+                    }}/>
+                </View>
+            }
+        </View>
+    );
+
+    function getCities() {
+        GetRequest("api")
+            .then(response => {
+                if (response) {
+                    let array = [];
+                    response.data.map((item, index) => {
+                        let obj = {
+                            title: item.title,
+                            id: item.id,
+                        };
+                        array.push(obj);
+                    });
+                    context.setCities(array)
+                    context.setCityData(response.data)
+                }
+            });
+    }
+
+    function getOffices() {
+        PostRequest("api")
+            .then(response => {
+                context.setOffices(response.data)
+            }).catch((e) => {
+            console.warn('Offices err: ', e.response);
+        });
+    }
+
+    function checkVersion() {
+        PostRequest("api")
+            .then((responseJson) => {
+                if (responseJson) {
+                    let res = responseJson.data
+                    context.setAppVersion(res.version)
+                    if (res.version == VersionNumber.appVersion) {
+                    } else {
+                        context.setUpdateModalVisibility(true)
+                        context.setUpdateLink(res.link)
+                    }
+                }
+            }).catch((e) => {
+        })
+    }
+}
+

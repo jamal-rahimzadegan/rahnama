@@ -4,7 +4,7 @@
 <br/>
 <img src="https://rahnama.com/logo.svg" height="100px" width="50%"/>
 <br/>
-Hmshahri publication official app. Advertising and requirements registration platform for daily usage.
+Hmshahri publication official app (Android and PWA). Advertising and requirements registration platform for daily usage.
 <br/>
 <br/>
 

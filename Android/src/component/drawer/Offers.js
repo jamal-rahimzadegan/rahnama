@@ -1,17 +1,3 @@
-import React, {Component} from "react";
-import {BackHandler, Image, ScrollView, StatusBar, Text, TouchableOpacity, View} from "react-native";
-import NetInfo from "@react-native-community/netinfo";
-import styles from "../../assets/styles/Offers";
-import SInfo from 'react-native-sensitive-info';
-import InternetModal from "../modals/InternetModal";
-import {RedMed} from "../../assets/styles/GlobalStyle";
-import Icon2 from "react-native-vector-icons/MaterialIcons";
-import {persianText, formatMoney} from "../../statics/functions";
-import LoadingLogo from "../../statics/LoadingLogo";
-import PostRequest from "../../statics/connection";
-import {Context} from "../../context/Context";
-import NotifyModal from "../modals/NotifyModal";
-
 export default class Offers extends Component {
     static contextType = Context
 

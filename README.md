@@ -1,4 +1,4 @@
-[Rahnama](https://myket.ir/app/com.rahnama.app)
+[Rahnama App](https://myket.ir/app/com.rahnama.app)
 <br/>
 [Offical website](https://rahnama.com)
 <br/>

@@ -9,33 +9,25 @@ import {
     LightModeBG,
     LightModeInpBG,
     LightModeTxt, LightSelectAbleModeBtn
-} from "../assets/styles/GlobalStyle";
+} from "./GlobalStyle";
 
 export const Context = React.createContext();
 
 export function ContextProvider(props) {
-    //------City + Area----------------------------------------------------------
     const [cities, setCities] = useState([]);
     const [cityData, setCityData] = useState([]);
     const [areas, setAreas] = useState([]);
     const [areaData, setAreaData] = useState([]);
-    //------app Version----------------------------------------------------------
     const [appVersion, setAppVersion] = useState('');
     const [updateLink, setUpdateLink] = useState('https://rahnama.com/');
     const [isShowUpdate, setUpdateModalVisibility] = useState(false);
-    //------token----------------------------------------------------------
     const [token, setToken] = useState('');
-    //------theme----------------------------------------------------------
     const [theme, setTheme] = useState('');
-    //------Drawer----------------------------------------------------------
     const [drawerState, setDrawerState] = useState(false);
-    //------Internet----------------------------------------------------------
     const [isHasInternet, setInternetState] = useState(true);
-    //------Cats----------------------------------------------------------
     const [categories, setCategories] = useState([]);
-    //------offices----------------------------------------------------------
     const [offices, setOffices] = useState([]);
-    //------Functions----------------------------------------------------------
+
     getToken()
     getInitialTheme()
 
@@ -52,18 +44,12 @@ export function ContextProvider(props) {
                 isHasInternet,
                 set_Network_is_Disconnected: () => setInternetState(false),
                 set_Network_is_Connected: () => setInternetState(true),
-                //-----Cities + Areas-----------------------------------------------------------------------
                 cities, setCities, cityData, setCityData,
                 areas, setAreas, areaData, setAreaData,
-                //-----token-----------------------------------------------------------------------
                 token, setToken,
-                //-----offices-----------------------------------------------------------------------
                 offices, setOffices,
-                //-----categories-----------------------------------------------------------------------
                 categories, setCategories,
-                //-----app Version-----------------------------------------------------------------------
                 appVersion, setAppVersion, isShowUpdate, setUpdateModalVisibility, updateLink, setUpdateLink,
-                //-----Drawer-----------------------------------------------------------------------
                 drawerState, setDrawerState,
             }}>
             {props.children}
@@ -72,7 +58,7 @@ export function ContextProvider(props) {
 
     //------get token-----------------------------------------------------------
     function getToken() {
-        SInfo.getItem('@TOKEN', {}).then((token) => {
+        SInfo.getItem('@tokenOfTheUserGoesHere', {}).then((token) => {
             setToken(token)
         })
     }
